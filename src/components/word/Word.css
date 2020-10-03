@@ -1,0 +1,17 @@
+.App-Word{
+  color: white;
+  font-size: 92px;
+  font-weight: 500;
+  font-family: 'Gotham';
+  text-transform: uppercase;
+}
+
+
+.App-Word span.matched{
+  color: #54ba18
+}
+
+
+.App-Word span.unmatched{
+  color: #445298
+}
