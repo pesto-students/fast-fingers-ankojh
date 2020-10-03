@@ -1,0 +1,123 @@
+import React, { useEffect, useRef, useState } from 'react';
+import './Timer.css'
+
+const TIMER_DIMENSION = '257.1';
+const TIMER_STROKE_WIDTH = '15'
+
+const Timer = (props) => {
+
+  const pathRef = useRef();
+  const [state, setState] = useState({
+    totalTimeInMS: 0,
+    startTime: new Date().getTime(),
+    circlePath: ''
+  })
+
+  const [pathLength, setPathLength] = useState(0);
+  const [timeLeft, setTimeLeft] = useState(null);
+
+
+  useEffect(() => {
+    console.log('called one');
+
+    setState({
+      ...state,
+      circlePath: generateTimerCirclePath(TIMER_DIMENSION, TIMER_STROKE_WIDTH)
+    })
+
+    getPathLength();
+    runTimer(props.timeInSec * 1000, props.timeInSec * 1000)
+
+  }, [])
+
+
+  function formatTimeInSec(timeInMS){
+    if(timeInMS === null){
+      return ''
+    }
+
+    return `${parseInt(timeInMS/1000)}:${((timeInMS%1000) + '0').substring(0,2)}`
+  }
+
+
+  function runTimer(timeInMS, totalTimeInMS) {
+
+    if (timeInMS <= 0) {
+      onComplete();
+      return
+    }
+
+
+    requestAnimationFrame(() => {
+      const now = new Date().getTime();
+      let totalTimeLeft = totalTimeInMS - (now - state.startTime);
+      if(totalTimeLeft<0){
+        totalTimeLeft = 0;
+      }
+      setTimeLeft(totalTimeLeft)
+      runTimer(totalTimeLeft, props.timeInSec * 1000);
+    });
+  }
+
+  function getPathLength() {
+    setTimeout(() => {
+      setPathLength(pathRef.current.getTotalLength())
+    });
+  }
+
+
+  function onComplete() {
+    props.onComplete && props.onComplete();
+  }
+
+
+  function generateTimerCirclePath(timerDimension, strokeWidth) {
+
+    const center = (timerDimension / 2).toFixed(2);
+    const radius = ((timerDimension - strokeWidth) / 2).toFixed(2);
+
+    return `M ${center}, ${center} m -${radius}, 0 a ${radius},${radius} 0 1,0 ${radius * 2},0 a ${radius},${radius} 0 1,0 -${radius * 2},0`
+  }
+
+
+  return (
+    <div className="App-Timer">
+      <div className="timer_count">
+        <span className="timer_count-text">{formatTimeInSec(timeLeft)}</span>
+      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width={TIMER_DIMENSION}
+        height={TIMER_DIMENSION}
+        fill="transparent"
+        viewBox={`0 0 ${TIMER_DIMENSION} ${TIMER_DIMENSION}`}>
+        <g>
+          <path stroke="#ffffff" strokeWidth={TIMER_STROKE_WIDTH}
+            fill="transparent"
+            d={state.circlePath}
+            opacity="0.3" />
+        </g>
+        <g>
+          <path
+            className="timer_circle"
+            ref={pathRef}
+            stroke="#ff5155"
+            strokeWidth={TIMER_STROKE_WIDTH}
+            fill="transparent"
+            d={state.circlePath}
+            opacity="1"
+            style={{
+              strokeDasharray: pathLength,
+              strokeDashoffset: -pathLength,
+              transformOrigin: 'center',
+              animation: `time-circle ${props.timeInSec}s linear forwards`
+            }}
+            transform="rotate(90)"
+          />
+        </g>
+      </svg>
+    </div>
+  );
+};
+
+export default Timer;
