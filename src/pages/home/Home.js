@@ -1,26 +1,39 @@
-import React, { useEffect, useState } from 'react'
-import Dropdown from '../../components/dropdown/Dropdown'
+import React, { useState } from 'react'
 import IconButton from '../../components/iconButton/IconButton'
 import LineText from '../../components/lineText/LineText'
-import ScoreBoard from '../../components/scoreboard/ScoreBoard'
-import Timer from '../../components/timer/Timer'
 import './Home.css'
-// import data from './../../assets/dictionary.json'
+import logo from './../../assets/Icon awesome-keyboard.svg'
+import Input from '../../components/input/Input'
+import Dropdown from '../../components/dropdown/Dropdown'
+import playIcon from '../../assets/Icon awesome-play.svg'
 
 function Home(props) {
 
-  const [state, setState] = useState({ word: '' })
+  const [state, setState] = useState({ name: '', difficultyLevel: {} })
 
-  function startGame(){
+  function startGame() {
+    props.startGame && props.startGame(state.name, state.difficultyLevel);
+  }
+
+  function onDifficultyLevelChange(){
 
   }
 
+  function onInputKeyUp(){
+    
+  }
 
 
   return (
     <div className="App-Home">
-      Ankit
-    
+      <img className="App-logo" src={logo} alt={props.app.name}/>
+      <span className="App-name">{props.app.name}</span>
+      <LineText className="App-tag" text={props.app.tag} />
+      <Input placeholder={'Type Your Name'}/>
+      <Dropdown default={{ text: 'DIFFICULTY LEVEL' }}
+        options={props.difficultyLevels} />
+
+      <IconButton onClick={startGame} icon={playIcon} fontSize={'48px'} iconHeight={'71px'} text={'Start Game'} />
     </div>
   )
 }
@@ -28,7 +41,6 @@ function Home(props) {
 
 export default Home;
 // {/* <Timer timeInSec={5} /> */ }
-// {/* <input onKeyUp={e => { setState({ word: e.target.value }) }} /> */ }
 // {/* <LineText /> */ }
 // {/* <ScoreBoard scores={[
 //         { game: 'Game 1', time: '1:10' },

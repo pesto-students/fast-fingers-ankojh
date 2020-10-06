@@ -104,7 +104,7 @@ const Timer = (props) => {
             fill="transparent"
             d={state.circlePath}
             opacity="1"
-            stroke-linecap="round"
+            strokeLinecap="round"
             style={{
               strokeDasharray: pathLength,
               strokeDashoffset: -pathLength,

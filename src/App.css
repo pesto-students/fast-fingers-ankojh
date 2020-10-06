@@ -5,9 +5,11 @@
   background-image: linear-gradient(black, #011e24df);
   grid-template-rows: 1fr auto 1fr;
   grid-template-columns: unset;
-  grid-template-areas: "right middle left";
+  grid-template-areas: "right"
+                        "middle" 
+                        "left";
   box-sizing: border-box; 
-  padding: 25px;
+  padding: 10px;
 }
 
 
@@ -25,7 +27,7 @@
 }
 
 .App.wide-screen{
-  padding: 50px;
+  padding: 25px;
   grid-template-columns: 1fr auto 1fr;
   grid-template-areas: "left middle right";
   grid-template-rows: unset;

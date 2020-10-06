@@ -1,6 +1,6 @@
 .App-line-text{
   position: relative;
-  color:red;
+  color:#ff5155;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -9,7 +9,7 @@
 .App-line-text .line{
   position: relative;
   bottom: 50%;
-  border-bottom :1px solid red;
+  border-bottom :1px solid #ff5155;
   flex:1
 }
 

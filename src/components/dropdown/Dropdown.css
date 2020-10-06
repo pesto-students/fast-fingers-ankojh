@@ -1,17 +1,20 @@
 .App-Dropdown{
   position: relative;
+  width:100%;
+  margin-bottom: 25px;
 }
 
 .App-Dropdown .dropdown-main{
   color: #97a5a7;
   font-size: 35px;
-  padding:10px;
+  padding: 0px 29px;
   border-radius: 10px;
   border:1px solid #97a5a7;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 300px;
+  height: 90px;
+  box-sizing: border-box;
   cursor: pointer;
 }
 

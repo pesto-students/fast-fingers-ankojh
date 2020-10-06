@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react'
+import Input from '../../components/input/Input'
+import Timer from '../../components/timer/Timer'
+import Word from '../../components/word/Word'
 import './Game.css'
 
 function Game(props) {
-  console.log('game')
-  useEffect(() => {
-    // no name or difficulty redirect to startgame
-  }, [])
-
+  
   return (
     <div className="App-Game">
-      Game
+      <Timer timeInSec={5} />
+      <Word word={'window'} typedWord={''}/>
+      <Input />
     </div>
   )
 }

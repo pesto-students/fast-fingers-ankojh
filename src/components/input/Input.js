@@ -21,6 +21,7 @@ function Input(props) {
     <input
       className="App-Input"
       ref={inputRef}
+      placeholder={props.placeholder}
       onKeyUp={onKeyUpHandler}
       onFocus={onFocusHandler}
       onBlur={onBlurHandler}
