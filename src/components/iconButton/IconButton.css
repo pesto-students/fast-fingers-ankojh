@@ -4,6 +4,10 @@
   padding: 5px;
   border-radius: 10px;;
   margin-top: 5px;
+  border: 1px solid transparent;
+  box-shadow: 0px 0px 0px 0px rgb(255, 0, 0);
+  transition: all 0.3s;
+  user-select: none;
 }
 
 .App-Icon-Button[disabled]:hover{
@@ -13,12 +17,27 @@
 }
 
 .App-Icon-Button img {
+  /* margin-right: 20px; */
+}
+
+.App-Icon-Button span {
   margin-right: 20px;
 }
 
 .App-Icon-Button:hover{
-  transition: all 0.3s;
   cursor: pointer;
-  box-shadow: 0px 0px 10px 5px rgb(255, 0, 0);
+  border: 1px solid red;
+  box-shadow: 5px 5px 5px 0px rgb(255, 0, 0);
   transform: scale(1.01)
+}
+
+
+.App-Icon-Button:active{
+  border: 1px solid white;
+  box-shadow: 5px 5px 10px 0px rgb(255, 255, 255);
+}
+
+.App-Icon-Button:hover img{
+  transition: all 0.3s;
+  transform: scale(1.1);
 }

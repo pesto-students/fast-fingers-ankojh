@@ -18,8 +18,6 @@ const Timer = (props) => {
 
 
   useEffect(() => {
-    console.log('called one');
-
     setState({
       ...state,
       circlePath: generateTimerCirclePath(TIMER_DIMENSION, TIMER_STROKE_WIDTH)
@@ -106,6 +104,7 @@ const Timer = (props) => {
             fill="transparent"
             d={state.circlePath}
             opacity="1"
+            stroke-linecap="round"
             style={{
               strokeDasharray: pathLength,
               strokeDashoffset: -pathLength,

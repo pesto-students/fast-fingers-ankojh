@@ -18,16 +18,13 @@ function Input(props) {
   }
 
   return (
-    <div className="App-Input">
     <input
-      className="App-Input__field"
+      className="App-Input"
       ref={inputRef}
       onKeyUp={onKeyUpHandler}
       onFocus={onFocusHandler}
       onBlur={onBlurHandler}
       type="text" />
-    <span className="App-Input__error">error</span>
-    </div>
   )
 }
 

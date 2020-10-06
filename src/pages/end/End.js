@@ -1,7 +1,7 @@
 import React from 'react'
-import './EndGame.css'
+import './End.css'
 
-function EndGame(props) {
+function End(props) {
   
 
   console.log('end')
@@ -12,4 +12,4 @@ function EndGame(props) {
   )
 }
 
-export default EndGame;
+export default End;

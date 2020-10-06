@@ -1,28 +1,108 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
 import './App.css';
 import Game from './pages/game/Game';
-import StartGame from './pages/startGame/StartGame';
-import EndGame from './pages/endGame/EndGame';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
+import Home from './pages/home/Home';
+import End from './pages/end/End';
+import { ResizeContext } from './contexts/resizeContext';
 
 
-//* project notes
-// min number of letter for word == 4, 4/2 = 2seconds
-// use right empty area as developer console
-
+const MIN_LENGTH = 4;
+const MAX_LENGTH = 12;
+const MIN_DIFFICULTY_LEVEL = 1;
+const MAX_DIFFICULTY_LEVEL = 2;
 
 function App() {
+
+  const { isWideScreen } = useContext(ResizeContext);
+
+  const [state, setState] = useState({
+    playerName: '',
+    difficultyFactor: null,
+    isGameStarted: false,
+    isGameEnded: false,
+    screen: 'home',
+    words: {}
+  })
+
+  const [previousGames, setPreviousGames] = useState([])
+
+  useEffect(()=>{
+    getDictionary();
+  },[])
+
+
+  async function getDictionary(){
+      const wordArray = await (await fetch('/data/dictionary.json')).json();
+      const wordsByLength = wordArray.reduce((acc, word)=>{
+        const length = word.length;
+
+        if(length<MIN_LENGTH || length > MAX_LENGTH){ //only serving 4-12characters words
+          return acc;
+        }
+
+        if(acc[length]){
+          acc[length].push(word);
+        }
+        else{
+          acc[length] = [word];
+        }
+
+        return acc;
+
+      },{})
+
+      setState({
+        ...state,
+        words: wordsByLength
+      })
+  }
+
+
+
+  function getRandomWord(){
+
+  }
+
+
+
+  function startGame() {
+    setState({
+      ...state,
+      screen: 'game'
+    })
+  }
+
+  function endGame(gameResults) {
+    state.previousGames.push(gameResults);
+    setState({
+      ...state,
+      screen: 'end'
+    })
+  }
+
+  function quitGame() {
+
+  }
+
+  function goToHome() {
+
+  }
+
+  const showHome = !state.isGameStarted && !state.isGameEnded;
+
   return (
-    <Router>
-      <div className="App">
-        <Switch>
-          <Route path="/end" component={EndGame} exact />
-          <Route path="/game" component={Game} exact />
-          <Route path="/" component={StartGame} exact/>
-        </Switch>
+    <div className={`App ${isWideScreen ? 'wide-screen' : ''}`}>
+      <div previousgames={previousGames} screen={state.screen}>left</div>
+      <div screen={state.screen}>
+        {state.screen === 'home' && <Home />}
+        {state.screen === 'game' && <Game />}
+        {state.screen === 'end' && <End />}
       </div>
-    </Router>
+      <div screen={state.screen}>right</div>
+    </div>
   );
-} 
+}
 
 export default App;

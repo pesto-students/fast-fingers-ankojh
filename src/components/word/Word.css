@@ -1,17 +1,42 @@
 .App-Word{
+  display: flex;
+}
+
+
+.App-Word div{
+  transition: all 0.2s;
   color: white;
   font-size: 92px;
   font-weight: 500;
   font-family: 'Gotham';
   text-transform: uppercase;
+  position: relative;
+  top: 0px
 }
 
 
-.App-Word span.matched{
-  color: #54ba18
+.App-Word div.matched{
+  transition: all 0.2s;
+  color: #54ba18;
+  animation: matched-letter 0.5s cubic-bezier(0.59, 2.47, 0, 0.02);
 }
 
 
-.App-Word span.unmatched{
-  color: #445298
+.App-Word div.unmatched{
+  transition: all 0.2s;
+  color: #445298;
+  animation: unmatched-letter 0.5s cubic-bezier(0.59, 2.47, 0, 0.02);
+}
+
+
+@keyframes unmatched-letter{
+  0% { transform: rotate(20deg) }
+  50% { transform: rotate(-20deg) }
+  100% { transform: rotate(0deg) }
+}
+
+@keyframes matched-letter{
+  0% { transform: scale(1) }
+  50% { transform: scale(1.1) }
+  10% { transform: scale(1) }
 }

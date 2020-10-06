@@ -53,7 +53,7 @@ const Word = (props) => {
           if(!char.isNotFound){
             className = char.isMatched === true ? 'matched' : 'unmatched'
           }
-          return (<span className={className} key={index}>{char.char}</span>)
+          return (<div className={className} key={index}>{char.char}</div>)
         })
       }
 

@@ -1,0 +1,23 @@
+.App-Home{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color:#ff5155;
+}
+
+
+
+.tagline__line {
+   width: 100%;
+   text-align: center;
+   border-bottom: 1px solid rgb(255, 0, 0);
+   line-height: 0.1em;
+   margin: 10px 0px 20px;
+}
+
+.tagline__text {
+  background:rgb(0, 0, 0, 0);
+  padding:0px 10px
+}
