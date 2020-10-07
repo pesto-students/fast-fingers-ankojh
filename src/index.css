@@ -8,3 +8,18 @@ html, body, #root{
 #root{
   background-image: url('./assets/Group\ 243.svg');
 }
+
+@font-face {
+  font-family: 'breamcatcher';
+  src: local('breamcatcher'), url(./fonts/breamcatcher/breamcatcher.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'lasercorpsgrad';
+  src: local('lasercorpsgrad'), url(./fonts/Laser_Corps/lasercorpsgrad.ttf) format('opentype');
+}
+
+@font-face {
+  font-family: 'Gotham';
+  src: local('Gotham'), url(./fonts/Gotham\ Book\ Regular.otf) format('opentype');
+}

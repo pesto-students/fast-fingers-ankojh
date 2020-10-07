@@ -1,5 +1,7 @@
 .App-Word{
   display: flex;
+  margin: 30px 0px; 
+  user-select: none;
 }
 
 

@@ -14,12 +14,16 @@ const GAME_STATES = {
   FAIL: 'fail'
 }
 
+const SUCCESS_TEXT= ['THAT WAS FAST!', 'SWIFTY, CRAZY!', 'GREAT JOB!', 'FIRE-Y KEYS!', 'NIMBLE!', 'NO WAY!']
+
+
 function Game(props) {
 
   const [state, setState] = useState({
     word: '',
     typedWord: '',
-    gameState: GAME_STATES.READY
+    gameState: GAME_STATES.READY,
+    successText:''
   })
 
   useEffect(() => {
@@ -29,6 +33,11 @@ function Game(props) {
     // eslint-disable-next-line
   }, [])
 
+
+  function getRandomSuccessText(){
+    const text = SUCCESS_TEXT[parseInt(Math.random() * 10) % SUCCESS_TEXT.length];
+    return text;
+  }
 
   function getWordLengthFromDifficultyFactor(diffFactor, minFactor, maxFactor, minLength, maxLength){
     const mappedValue = mapRange(diffFactor, [minFactor, maxFactor], [minLength, maxLength]);
@@ -74,7 +83,8 @@ function Game(props) {
 
     setState({
       ...state,
-      gameState: GAME_STATES.SUCCESS
+      gameState: GAME_STATES.SUCCESS,
+      successText: getRandomSuccessText()
     })
     props.onSuccess && props.onSuccess();
 
@@ -106,12 +116,15 @@ function Game(props) {
 
       {
         state.gameState === GAME_STATES.SUCCESS &&
-        <div>Good Job</div>
+      <div>{state.successText}</div>
       }
 
       {
         state.gameState === GAME_STATES.FAIL &&
-        <div>C'mon! You Can Do Better</div>
+        <>
+        <div>C'mon!</div>
+        <div> You Can Do Better</div>
+        </>
       }
 
     </div>

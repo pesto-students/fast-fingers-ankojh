@@ -12,6 +12,8 @@ const ResizeContextProvider = (props) => {
 
   useEffect(() => {
 
+    console.log(window.innerWidth);
+
     setState({
       width: window.innerWidth,
       isWideScreen: window.innerWidth > 750

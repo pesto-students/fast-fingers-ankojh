@@ -5,6 +5,7 @@
   padding: 10px;
   border-radius: 15px;
   font-size: 30px;
+  height: 100%;
 }
 
 .App-Scoreboard .scoreboard-title{

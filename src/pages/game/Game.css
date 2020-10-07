@@ -7,3 +7,9 @@
   align-items: center;
   color: red;
 }
+
+.App-Game div{
+  font-family: 'Gotham', sans-serif;
+  font-size: 62px;
+  color: white;
+}

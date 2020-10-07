@@ -22,10 +22,11 @@
   grid-area: middle;
 }
 
-.App .App-bottom {
+.App .App-right {
   grid-area: right;
+  display: flex;
+  justify-content: flex-end;
 }
-
 .App.wide-screen{
   padding: 25px;
   grid-template-columns: 1fr auto 1fr;
