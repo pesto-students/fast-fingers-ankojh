@@ -35,7 +35,6 @@ function Game(props) {
 
   function giveNewWord() {
     const word = getRandomWord();
-    console.log(word)
     setState({
       ...state,
       word,
@@ -64,7 +63,7 @@ function Game(props) {
       gameState: GAME_STATES.FAIL
     })
     setTimeout(() => {
-      // props.onFailure && props.onFailure();
+      props.onFailure && props.onFailure();
     }, 1000);
 
   }

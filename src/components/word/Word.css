@@ -16,14 +16,12 @@
 
 
 .App-Word div.matched{
-  transition: all 0.2s;
   color: #54ba18;
   animation: matched-letter 0.5s cubic-bezier(0.59, 2.47, 0, 0.02);
 }
 
 
 .App-Word div.unmatched{
-  transition: all 0.2s;
   color: #445298;
   animation: unmatched-letter 0.5s cubic-bezier(0.59, 2.47, 0, 0.02);
 }

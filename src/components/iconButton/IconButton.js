@@ -5,7 +5,7 @@ import './IconButton.css'
 const IconButton = (props) => {
 
   function clickHandler() {
-    props.onClick && props.onClick();
+    !props.disabled && props.onClick && props.onClick();
   }
 
   return (
@@ -16,11 +16,13 @@ const IconButton = (props) => {
       title={props.text}
     >
 
-      <img
-        src={props.icon}
-        alt={props.text}
-        height={props.iconHeight}
-      />
+      {
+        props.icon && <img
+          src={props.icon}
+          alt={props.text}
+          height={props.iconHeight}
+        />
+      }
 
       <span
         style={{

@@ -37,10 +37,13 @@ function App() {
   const { isWideScreen } = useContext(ResizeContext);
 
   const [state, setState] = useState({
-    playerName: '',
-    difficultyFactor: 1,
+    playerName: 'Guest',
+    gameName: '',
+    gameStartDifficultyFactor: null,
+    difficultyFactor: null,
     gameStartTime: null,
-    screen: 'game',
+    screen: 'home',
+    bestGame: ''
   })
 
 
@@ -60,27 +63,62 @@ function App() {
   }
 
 
-  function startGame() {
-
+  function startGame(name = state.playerName, level = state.gameStartDifficultyFactor) {
     const gameNumber = previousGames.length;
 
     setState({
       ...state,
       screen: 'game',
       gameName: `Game ${gameNumber}`,
-      gameStartTime: new Date().getTime()
+      gameStartTime: new Date().getTime(),
+      playerName: name,
+      difficultyFactor: level.difficultyFactor,
+      gameStartDifficultyFactor: level
     })
   }
 
-  function endGame(gameResults) {
-    const now = new Date().getTime();
-    gameResults.endTime = now
-    state.previousGames.push(gameResults);
+  function endGame() {
+
+    const bestGame = appendToPreviousGames();
     setState({
       ...state,
+      gameStartTime: null,
+      difficultyFactor: null,
       screen: 'end',
+      bestGame
     })
   }
+
+
+  function appendToPreviousGames() {
+    const now = new Date().getTime();
+    const gameTime = now - state.gameStartTime;
+    const thisGame = {
+      gameName: state.gameName,
+      playerName: state.playerName,
+      difficultyFactor: state.difficultyFactor,
+      gameStartTime: state.gameStartTime,
+      gameEndTime: now,
+      gameTime
+    }
+
+    const games = [...previousGames, thisGame]
+
+    let bestGame = games[0]
+    
+    for(let i=1;i<games.length;i++){
+      if(games[i].gameTime > bestGame.gameTime){
+        bestGame = games[i]
+      }
+    }
+
+    setPreviousGames([
+      ...games
+    ])
+
+    return bestGame.gameName;
+  }
+
 
   function quitGame() {
     //show alert
@@ -92,7 +130,7 @@ function App() {
     setState({
       ...state,
       playerName: '',
-      difficultyFactor: 0,
+      difficultyFactor: 1,
       screen: 'home'
     })
   }
@@ -100,7 +138,7 @@ function App() {
   function successfulWord() {
     setState({
       ...state,
-      difficultyFactor: state.difficultyFactor + 0.1
+      difficultyFactor: state.difficultyFactor + 0.01
     })
   }
 
@@ -109,11 +147,14 @@ function App() {
 
       <div
         className="App-left">
-        {state.screen != 'home' && <Left 
+        {state.screen != 'home' && <Left
           previousGames={previousGames}
           screen={state.screen}
+          playerName={state.playerName}
+          bestGame={state.bestGame}
+          difficultyLevels={DIFFICULTY_LEVELS}
           difficultyFactor={state.difficultyFactor} />}
-        </div>
+      </div>
 
 
 
@@ -140,7 +181,8 @@ function App() {
         {
           state.screen === 'end' &&
           <End
-            time={{ start: state.gameStartTime }}
+            game={previousGames[previousGames.length - 1]}
+            bestGame={state.bestGame}
             goAgain={startGame}
           />
         }
@@ -149,7 +191,7 @@ function App() {
 
 
       <div className="App-right">
-        {state.screen != 'home' && <Right screen={state.screen}/>}
+        {state.screen != 'home' && <Right screen={state.screen} />}
       </div>
     </div>
   );

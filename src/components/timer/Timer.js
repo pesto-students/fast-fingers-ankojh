@@ -27,6 +27,7 @@ const Timer = (props) => {
 
     getPathLength();
     endTimer = false;
+
     runTimer(parseInt(props.timeInSec * 1000), parseInt(props.timeInSec * 1000))
 
     return()=>{
@@ -60,7 +61,7 @@ const Timer = (props) => {
       if(totalTimeLeft<0){
         totalTimeLeft = 0;
       }
-      console.log(totalTimeLeft)
+      
       setTimeLeft(totalTimeLeft)
       runTimer(totalTimeLeft, props.timeInSec * 1000);
     });

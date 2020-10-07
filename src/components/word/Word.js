@@ -37,11 +37,11 @@ const Word = (props) => {
       wordInfo.push(charData)
     }
 
-    if(isWordMatched){
+    setState([...wordInfo])
+
+    if (isWordMatched) {
       onMatch();
     }
-
-    setState([...wordInfo])
   }
 
   function onMatch(){

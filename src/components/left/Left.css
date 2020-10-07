@@ -1,0 +1,15 @@
+.App-left__panel{
+  max-width: 300px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+
+.game-details{
+  margin-bottom: 30px;
+}
+
+.game-end{
+  margin-top: 30px;;
+}

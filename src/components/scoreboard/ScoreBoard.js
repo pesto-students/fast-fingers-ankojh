@@ -8,9 +8,9 @@ const ScoreBoard = (props) => {
 
       {
         props.scores && props.scores.map(score =>
-          <div className="scoreboard-score">
-            <span className="scoreboard-best">PERSONAL BEST</span>
-            <span className="scoreboard-data">{score.game} : {score.time}</span>
+          <div className="scoreboard-score" key={score.gameName}>
+            {props.bestGame === score.gameName &&<span className="scoreboard-best">PERSONAL BEST</span>}
+            <span className="scoreboard-data">{score.gameName} : {score.gameTime}</span>
           </div>
         )
       }

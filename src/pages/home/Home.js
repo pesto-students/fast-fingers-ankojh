@@ -41,28 +41,17 @@ function Home(props) {
         onChange={onDifficultyLevelChange}
         />
 
-      <IconButton onClick={startGame} icon={playIcon} fontSize={'48px'} iconHeight={'71px'} text={'Start Game'} />
+      <IconButton 
+        onClick={startGame}
+        icon={playIcon}
+        fontSize={'48px'}
+        iconHeight={'71px'}
+        text={'Start Game'} 
+        disable={true}
+        />
     </div>
   )
 }
 
 
 export default Home;
-// {/* <Timer timeInSec={5} /> */ }
-// {/* <LineText /> */ }
-// {/* <ScoreBoard scores={[
-//         { game: 'Game 1', time: '1:10' },
-//         { game: 'Game 1', time: '1:10' },
-//         { game: 'Game 1', time: '1:10' },
-//         { game: 'Game 1', time: '1:10' }
-//       ]} /> */}
-
-
-
-// {/* <Dropdown
-//         default={{ text: 'DIFFICULTY LEVEL' }}
-//         options={[
-//           { text: 'EASY' },
-//           { text: 'MEDIUM' },
-//           { text: 'HARD' }
-//         ]} /> */}
