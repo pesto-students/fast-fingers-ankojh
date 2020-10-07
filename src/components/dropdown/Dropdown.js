@@ -20,6 +20,7 @@ function Dropdown(props) {
       selectedIndex: -1,
       options: props.options
     })
+    // eslint-disable-next-line
   }, [])
 
 

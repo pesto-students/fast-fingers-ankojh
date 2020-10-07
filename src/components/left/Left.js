@@ -16,7 +16,7 @@ const Left = (props) => {
         <IconButton text={props.playerName} icon={playerIcon} />
         <IconButton text={'level'} icon={levelIcon} />
       </div>
-      {props.screen == 'game' ? <ScoreBoard scores={props.previousGames} bestGame={props.bestGame} /> : <div></div>}
+      {props.screen === 'game' ? <ScoreBoard scores={props.previousGames} bestGame={props.bestGame} /> : <div></div>}
       <div className="game-end">
       {props.screen === 'game' && <IconButton text={'STOP GAME'} icon={crossIcon} />}
       {props.screen === 'end' && <IconButton text={'QUIT'} />}

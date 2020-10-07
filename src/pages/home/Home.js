@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import IconButton from '../../components/iconButton/IconButton'
 import LineText from '../../components/lineText/LineText'
 import './Home.css'

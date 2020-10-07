@@ -26,6 +26,7 @@ function Game(props) {
     setTimeout(() => {
       giveNewWord();
     }, 2000);
+    // eslint-disable-next-line
   }, [])
 
 

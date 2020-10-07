@@ -33,6 +33,7 @@ const Timer = (props) => {
     return()=>{
       endTimer = true;
     }
+  // eslint-disable-next-line
   }, [])
 
 

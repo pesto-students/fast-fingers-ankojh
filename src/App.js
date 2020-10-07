@@ -4,7 +4,7 @@ import Game from './pages/game/Game';
 import Home from './pages/home/Home';
 import End from './pages/end/End';
 import { ResizeContext } from './contexts/resizeContext';
-import { loadDictionary, getRandomWordFromDictionary } from './utils/dictionary';
+import { loadDictionary } from './utils/dictionary';
 import Left from './components/left/Left';
 import Right from './components/right/Right';
 
@@ -20,11 +20,13 @@ const DIFFICULTY_LEVELS = [
   { text: 'MEDIUM', difficultyFactor: 1.5 },
   { text: 'HARD', difficultyFactor: 2 },
 ]
-
+// eslint-disable-next-line
 const MIN_DIFFICULTY_FACTOR = 1; //can't get easier than EASY
+// eslint-disable-next-line
 const MAX_DIFFICULTY_FACTOR = 3; // capping the difficulty
 
 const APP_NAME = 'FAST FINGERS'
+// eslint-disable-next-line
 const APP_NAME_SHORT = 'FF'
 const TAG_LINE = 'the ultimate typing game'
 
@@ -47,6 +49,7 @@ function App() {
   })
 
 
+  // eslint-disable-next-line
   const [isDictionaryLoading, setIsDictionaryLoading] = useState(false)
 
   const [previousGames, setPreviousGames] = useState([])
@@ -147,12 +150,13 @@ function App() {
 
       <div
         className="App-left">
-        {state.screen != 'home' && <Left
+        {state.screen !== 'home' && <Left
           previousGames={previousGames}
           screen={state.screen}
           playerName={state.playerName}
           bestGame={state.bestGame}
           difficultyLevels={DIFFICULTY_LEVELS}
+          quit={quitGame}
           difficultyFactor={state.difficultyFactor} />}
       </div>
 
@@ -191,7 +195,7 @@ function App() {
 
 
       <div className="App-right">
-        {state.screen != 'home' && <Right screen={state.screen} />}
+        {state.screen !== 'home' && <Right goHome={goToHome} screen={state.screen} />}
       </div>
     </div>
   );
