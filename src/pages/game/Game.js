@@ -31,7 +31,8 @@ function Game(props) {
 
 
   function getWordLengthFromDifficultyFactor(diffFactor, minFactor, maxFactor, minLength, maxLength){
-    return mapRange(diffFactor, [minFactor, maxFactor], [minLength, maxLength]);
+    const mappedValue = mapRange(diffFactor, [minFactor, maxFactor], [minLength, maxLength]);
+    return mappedValue;
   }
 
   function giveNewWord() {
@@ -54,7 +55,7 @@ function Game(props) {
 
 
   function getRandomWord() {
-    const wordLength = parseInt(getWordLengthFromDifficultyFactor(props.difficultyFactor, 1, 3, 4, 12))
+    const wordLength = parseInt(getWordLengthFromDifficultyFactor(((props.difficultyFactor % 1) % 0.5) * 100, 0, 50, 4, 12))
     return getRandomWordFromDictionary(wordLength);
   }
 

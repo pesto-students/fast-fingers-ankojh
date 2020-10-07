@@ -14,6 +14,7 @@ const IconButton = (props) => {
       disabled={props.disabled}
       className="App-Icon-Button"
       title={props.text}
+      tabIndex={props.tabIndex}
     >
 
       {
@@ -24,13 +25,13 @@ const IconButton = (props) => {
         />
       }
 
-      <span
+      {props.text && <span
         style={{
           fontSize: props.fontSize,
           fontFamily: props.fontFamily
         }}>
         {props.text}
-      </span>
+      </span>}
     </div>
   );
 };

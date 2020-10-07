@@ -45,10 +45,23 @@ function Dropdown(props) {
   }
 
 
+  function keyDowned(keyboardEvent){
+    if(keyboardEvent.keyCode === 13){
+      toggleOptions();
+    }
+  }
+
+
+  function optionKeyDowned(keyboardEvent, option, index){
+    if (keyboardEvent.keyCode === 13) {
+     optionClicked(option, index);
+    }
+  }
+
   return (
 
 
-    <div className="App-Dropdown">
+    <div className="App-Dropdown" tabIndex={props.tabIndex} onKeyDown={keyDowned}>
       <div className="dropdown-main" onClick={toggleOptions}>
         <span>{state.selectedText}</span>
         <img src={arrow} alt="pp" />
@@ -57,7 +70,7 @@ function Dropdown(props) {
         <div className="dropdown-options__content">
         {
           state.options.map((option, index) =>
-            <span key={index} className={`App-Dropdown__option ${index === state.selectedIndex ? 'selected' : ''}`} onClick={e => { optionClicked(option, index) }}>
+            <span key={index} onKeyDown={e=>optionKeyDowned(e, option, index)} tabIndex="0" className={`App-Dropdown__option ${index === state.selectedIndex ? 'selected' : ''}`} onClick={e => { optionClicked(option, index) }}>
               {option.text}
             </span>
           )
@@ -65,26 +78,6 @@ function Dropdown(props) {
         </div>
       </div>
     </div>
-
-    // <select
-    //   className="App-Dropdown"
-    //   ref={ref}
-    //   onChange={onChangeHandler}
-    //   value={state.selectValue}
-    // >
-    //   {
-    //     props.default && <option className="App-Dropdown__option" disabled hidden value={props.default.value}>
-    //       {props.default.text}
-    //     </option>
-    //   }
-    //   {
-    //     props.options && props.options.map(option =>
-    //       <option className="App-Dropdown__option" key={option.value} value={option.value}>
-    //         {option.text}
-    //       </option>
-    //     )
-    //   }
-    // </select>
   )
 }
 export default Dropdown;

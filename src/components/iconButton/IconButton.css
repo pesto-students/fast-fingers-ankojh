@@ -8,28 +8,30 @@
   box-shadow: 0px 0px 0px 0px rgb(255, 0, 0);
   transition: all 0.3s;
   user-select: none;
+  margin-bottom:22px;
+  outline:none
 }
 
 .App-Icon-Button[disabled]:hover{
   box-shadow: none;
-  transform: scale(1);
   cursor: default;
+  border: 1px solid transparent;
 }
 
 .App-Icon-Button img {
-  /* margin-right: 20px; */
+  margin-right: 20px;
 }
 
 .App-Icon-Button span {
   margin-right: 20px;
-  color: red;
+  color: #ff5155;
 }
 
 .App-Icon-Button:hover{
   cursor: pointer;
   border: 1px solid red;
   box-shadow: 5px 5px 5px 0px rgb(255, 0, 0);
-  transform: scale(1.01)
+  /* transform: scale(1.01) */
 }
 
 
@@ -40,5 +42,5 @@
 
 .App-Icon-Button:hover img{
   transition: all 0.3s;
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
 }

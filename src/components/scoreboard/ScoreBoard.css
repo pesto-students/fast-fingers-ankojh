@@ -1,14 +1,15 @@
 .App-Scoreboard{
   display: flex;
   flex-direction: column;
-  border: 1px solid red;
+  border: 3px solid #ff5155;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 15px;
   font-size: 30px;
 }
 
 .App-Scoreboard .scoreboard-title{
-  color: red;
+  color: #ff5155;
+  font-size: 36px;
   margin: 20px 0px;
 }
 
@@ -20,7 +21,7 @@
 
 .scoreboard-best{
   font-size: 11px;
-  color: red;
+  color: #ff5155;
 }
 
 .scoreboard-data{

@@ -8,8 +8,6 @@ import { loadDictionary } from './utils/dictionary';
 import Left from './components/left/Left';
 import Right from './components/right/Right';
 
-
-
 //move constants to separate file
 
 const WORD_MIN_LENGTH = 4;
@@ -95,13 +93,15 @@ function App() {
 
   function appendToPreviousGames() {
     const now = new Date().getTime();
-    const gameTime = now - state.gameStartTime;
+    const gameTimeInMS = now - state.gameStartTime;
+    const gameTime = `${parseInt(gameTimeInMS / 1000)}:${((gameTimeInMS % 1000) + '0').substring(0, 2)}` 
     const thisGame = {
       gameName: state.gameName,
       playerName: state.playerName,
       difficultyFactor: state.difficultyFactor,
       gameStartTime: state.gameStartTime,
       gameEndTime: now,
+      gameTimeInMS,
       gameTime
     }
 
@@ -110,7 +110,7 @@ function App() {
     let bestGame = games[0]
     
     for(let i=1;i<games.length;i++){
-      if(games[i].gameTime > bestGame.gameTime){
+      if (games[i].gameTimeInMS > bestGame.gameTimeInMS){
         bestGame = games[i]
       }
     }
@@ -157,6 +157,7 @@ function App() {
           bestGame={state.bestGame}
           difficultyLevels={DIFFICULTY_LEVELS}
           quit={quitGame}
+          end={endGame}
           difficultyFactor={state.difficultyFactor} />}
       </div>
 

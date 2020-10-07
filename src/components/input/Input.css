@@ -13,4 +13,18 @@
   /* font-family: Breamcatcher, sans-serif; */
   font-size: 35px;
   color: #032228;
+  border: 1px solid transparent;
+}
+
+
+.App-Input:hover{
+  border: 1px solid white;
+  transition: all 0.3s;
+  box-shadow: 5px 5px 5px 0px rgb(255, 255, 255);
+}
+
+.App-Input:focus {
+  /* border: 1px solid red;
+   transition: all 0.3s;
+   box-shadow: 5px 5px 5px 0px rgb(255, 0, 0); */
 }

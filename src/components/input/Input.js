@@ -13,6 +13,7 @@ function Input(props) {
     <input
       className="App-Input"
       ref={inputRef}
+      tabIndex={props.tabIndex}
       placeholder={props.placeholder}
       onKeyUp={onKeyUpHandler}
       type="text"

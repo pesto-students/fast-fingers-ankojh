@@ -14,7 +14,7 @@ function End(props) {
       <span className="end__game-name">SCORE : {props.game.gameName}</span>
       <span className="end__game-time">{props.game.gameTime}</span>
       {props.bestGame === props.game.gameName && <span className="end__game-high">New High Score</span>}
-      <IconButton onClick={playAgainClicked} text={'PLAY AGAIN'} icon={reloadIcon}/>
+      <IconButton onClick={playAgainClicked} fontSize={'54px'} text={'PLAY AGAIN'} icon={reloadIcon}/>
     </div>
   )
 }

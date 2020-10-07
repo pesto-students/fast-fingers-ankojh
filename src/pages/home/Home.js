@@ -18,14 +18,14 @@ function Home(props) {
   function onDifficultyLevelChange(difficultyLevel){
     setState({
       ...state,
-      difficultyLevel
+      difficultyLevel: {...difficultyLevel}
     })
   }
 
   function onInputKeyUp(name){
     setState({
       ...state,
-      name
+      name: name.toUpperCase()
     })
   }
 
@@ -35,10 +35,11 @@ function Home(props) {
       <img className="App-logo" src={logo} alt={props.app.name}/>
       <span className="App-name">{props.app.name}</span>
       <LineText className="App-tag" text={props.app.tag} />
-      <Input onKeyUp={onInputKeyUp} placeholder={'Type Your Name'}/>
+      <Input onKeyUp={onInputKeyUp} placeholder={'Type Your Name'} tabIndex={0}/>
       <Dropdown default={{ text: 'DIFFICULTY LEVEL' }}
         options={props.difficultyLevels} 
         onChange={onDifficultyLevelChange}
+        tabIndex={0}
         />
 
       <IconButton 
@@ -47,7 +48,8 @@ function Home(props) {
         fontSize={'48px'}
         iconHeight={'71px'}
         text={'Start Game'} 
-        disable={true}
+        tabIndex={0}
+        disabled={!state.name || !state.difficultyLevel.difficultyFactor}
         />
     </div>
   )
