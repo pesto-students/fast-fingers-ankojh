@@ -32,7 +32,7 @@ function Dropdown(props) {
       isOptionsOpen: false
     })
 
-    props.onChange && props.onClick(option, index);
+    props.onChange && props.onChange(option, index);
 
   }
 

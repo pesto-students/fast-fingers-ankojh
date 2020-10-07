@@ -40,7 +40,7 @@ function App() {
     playerName: '',
     difficultyFactor: 1,
     gameStartTime: null,
-    screen: 'home',
+    screen: 'game',
   })
 
 
@@ -124,7 +124,7 @@ function App() {
           <Home
             app={{ name: APP_NAME, tag: TAG_LINE }}
             difficultyLevels={DIFFICULTY_LEVELS}
-            start={startGame}
+            startGame={startGame}
           />
         }
 

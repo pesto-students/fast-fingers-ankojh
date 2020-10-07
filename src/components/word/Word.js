@@ -16,6 +16,9 @@ const Word = (props) => {
       return;
     }
 
+    actualWord = actualWord.toLowerCase();
+    typedWord = typedWord.toLowerCase();
+
     const wordInfo = []
     let isWordMatched = true;
     for (let [index,char] of actualWord.split('').entries()) {
@@ -24,6 +27,7 @@ const Word = (props) => {
         isMatched: typedWord[index] === char,
         isNotFound: typedWord[index] === undefined
       }
+
 
       if(typedWord[index] !== char){
         isWordMatched = false;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import IconButton from '../../components/iconButton/IconButton'
 import LineText from '../../components/lineText/LineText'
 import './Home.css'
@@ -15,12 +15,18 @@ function Home(props) {
     props.startGame && props.startGame(state.name, state.difficultyLevel);
   }
 
-  function onDifficultyLevelChange(){
-
+  function onDifficultyLevelChange(difficultyLevel){
+    setState({
+      ...state,
+      difficultyLevel
+    })
   }
 
-  function onInputKeyUp(){
-    
+  function onInputKeyUp(name){
+    setState({
+      ...state,
+      name
+    })
   }
 
 
@@ -29,9 +35,11 @@ function Home(props) {
       <img className="App-logo" src={logo} alt={props.app.name}/>
       <span className="App-name">{props.app.name}</span>
       <LineText className="App-tag" text={props.app.tag} />
-      <Input placeholder={'Type Your Name'}/>
+      <Input onKeyUp={onInputKeyUp} placeholder={'Type Your Name'}/>
       <Dropdown default={{ text: 'DIFFICULTY LEVEL' }}
-        options={props.difficultyLevels} />
+        options={props.difficultyLevels} 
+        onChange={onDifficultyLevelChange}
+        />
 
       <IconButton onClick={startGame} icon={playIcon} fontSize={'48px'} iconHeight={'71px'} text={'Start Game'} />
     </div>

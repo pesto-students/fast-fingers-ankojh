@@ -9,23 +9,16 @@ function Input(props) {
     props.onKeyUp && props.onKeyUp(currentValue);
   }
 
-  function onFocusHandler(event){
-    props.onFocus && props.onFocus();
-  }
-
-  function onBlurHandler(event){
-    props.onBlur && props.onBlur();
-  }
-
   return (
     <input
       className="App-Input"
       ref={inputRef}
       placeholder={props.placeholder}
       onKeyUp={onKeyUpHandler}
-      onFocus={onFocusHandler}
-      onBlur={onBlurHandler}
-      type="text" />
+      type="text"
+      style={props.style}
+      autoFocus
+       />
   )
 }
 

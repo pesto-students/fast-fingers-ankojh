@@ -4,13 +4,15 @@ import './Timer.css'
 const TIMER_DIMENSION = '257.1';
 const TIMER_STROKE_WIDTH = '15'
 
+let endTimer = false;
+
 const Timer = (props) => {
 
   const pathRef = useRef();
   const [state, setState] = useState({
     totalTimeInMS: 0,
     startTime: new Date().getTime(),
-    circlePath: ''
+    circlePath: '',
   })
 
   const [pathLength, setPathLength] = useState(0);
@@ -24,8 +26,12 @@ const Timer = (props) => {
     })
 
     getPathLength();
-    runTimer(props.timeInSec * 1000, props.timeInSec * 1000)
+    endTimer = false;
+    runTimer(parseInt(props.timeInSec * 1000), parseInt(props.timeInSec * 1000))
 
+    return()=>{
+      endTimer = true;
+    }
   }, [])
 
 
@@ -39,7 +45,6 @@ const Timer = (props) => {
 
 
   function runTimer(timeInMS, totalTimeInMS) {
-
     if (timeInMS <= 0) {
       onComplete();
       return
@@ -47,11 +52,15 @@ const Timer = (props) => {
 
 
     requestAnimationFrame(() => {
+      if (endTimer) {
+        return;
+      }
       const now = new Date().getTime();
       let totalTimeLeft = totalTimeInMS - (now - state.startTime);
       if(totalTimeLeft<0){
         totalTimeLeft = 0;
       }
+      console.log(totalTimeLeft)
       setTimeLeft(totalTimeLeft)
       runTimer(totalTimeLeft, props.timeInSec * 1000);
     });
