@@ -65,6 +65,16 @@ function App() {
 
 
   function startGame(name = state.playerName, level = state.gameStartDifficultyFactor) {
+
+
+    
+
+    const gamesFromStorage = JSON.parse(localStorage.getItem(name));
+    
+    if(gamesFromStorage){
+      setPreviousGames(gamesFromStorage)
+    }
+
     const gameNumber = previousGames.length;
 
     setState({
@@ -118,6 +128,8 @@ function App() {
     setPreviousGames([
       ...games
     ])
+  
+    localStorage.setItem(state.playerName, JSON.stringify(games)); //setting in localstorage
 
     return bestGame.gameName;
   }

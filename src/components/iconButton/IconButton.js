@@ -8,13 +8,21 @@ const IconButton = (props) => {
     !props.disabled && props.onClick && props.onClick();
   }
 
+  function keyDowned(keyboardEvent){
+    if(keyboardEvent.keyCode == 13){
+      clickHandler();
+    }
+  }
+
+
   return (
     <div
       onClick={clickHandler}
+      onKeyDown={keyDowned}
       disabled={props.disabled}
       className="App-Icon-Button"
       title={props.text}
-      tabIndex={props.tabIndex}
+      tabIndex={props.tabIndex ? props.tabIndex : 0}
     >
 
       {
