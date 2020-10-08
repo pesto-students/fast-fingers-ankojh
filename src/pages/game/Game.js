@@ -15,7 +15,7 @@ const GAME_STATES = {
   FAIL: 'fail'
 }
 
-const SUCCESS_TEXT= ['THAT WAS FAST!', 'SWIFTY, CRAZY!', 'GREAT JOB!', 'FIRE-Y KEYS!', 'NIMBLE!', 'NO WAY!']
+const SUCCESS_TEXT = ['THAT WAS FAST!', 'SWIFTY, CRAZY!', 'GREAT JOB!', 'FIRE-Y KEYS!', 'NIMBLE!', 'NO WAY!']
 
 
 function Game(props) {
@@ -24,25 +24,42 @@ function Game(props) {
     word: '',
     typedWord: '',
     gameState: GAME_STATES.READY,
-    successText:''
+    successText: '',
+    introText: 1
   })
 
-  const {isWideScreen} = useContext(ResizeContext);
+  const { isWideScreen } = useContext(ResizeContext);
 
   useEffect(() => {
     setTimeout(() => {
       giveNewWord();
-    }, 2000);
+    }, 3000);
+
+    setTimeout(() => {
+      setState({
+        ...state,
+        introText: 2
+      })
+    }, 1000)
+
+    setTimeout(() => {
+      setState({
+        ...state,
+        introText: 3
+      })
+    }, 2000)
+
+
     // eslint-disable-next-line
   }, [])
 
 
-  function getRandomSuccessText(){
+  function getRandomSuccessText() {
     const text = SUCCESS_TEXT[parseInt(Math.random() * 10) % SUCCESS_TEXT.length];
     return text;
   }
 
-  function getWordLengthFromDifficultyFactor(diffFactor, minFactor, maxFactor, minLength, maxLength){
+  function getWordLengthFromDifficultyFactor(diffFactor, minFactor, maxFactor, minLength, maxLength) {
     const mappedValue = mapRange(diffFactor, [minFactor, maxFactor], [minLength, maxLength]);
     return mappedValue;
   }
@@ -102,9 +119,9 @@ function Game(props) {
       {
         state.gameState === GAME_STATES.READY &&
         <>
-          <div>On Your Keyboard</div>
-          <div>Get Set</div>
-          <div>GO!</div>
+          {state.introText === 1 && <div className="intro-text">On Your Keyboard</div>}
+          {state.introText === 2 && <div className="intro-text">Get Set</div>}
+          {state.introText === 3 && <div className="intro-text">GO!</div>}
         </>
       }
 
@@ -119,14 +136,14 @@ function Game(props) {
 
       {
         state.gameState === GAME_STATES.SUCCESS &&
-      <div>{state.successText}</div>
+        <div>{state.successText}</div>
       }
 
       {
         state.gameState === GAME_STATES.FAIL &&
         <>
-        <div>C'mon!</div>
-        <div> You Can Do Better</div>
+          <div>C'mon!</div>
+          <div> You Can Do Better</div>
         </>
       }
 

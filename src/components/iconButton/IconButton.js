@@ -9,7 +9,7 @@ const IconButton = (props) => {
   }
 
   function keyDowned(keyboardEvent){
-    if(keyboardEvent.keyCode == 13){
+    if(keyboardEvent.keyCode === 13){
       clickHandler();
     }
   }

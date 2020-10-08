@@ -20,3 +20,13 @@
 .App-Game.wide-screen div{
   font-size: 62px;
 }
+
+.intro-text{
+  animation: intro 0.3s ease-out;
+}
+
+
+@keyframes intro {
+  0% { opacity:  0;}
+  1000% { opacity:  1;}
+}

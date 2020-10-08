@@ -2,9 +2,6 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { ResizeContext } from '../../contexts/resizeContext';
 import './Timer.css'
 
-const TIMER_DIMENSION = '257.1';
-const TIMER_STROKE_WIDTH = '15'
-
 let endTimer = false;
 
 const Timer = (props) => {
