@@ -158,7 +158,8 @@ function App() {
           difficultyLevels={DIFFICULTY_LEVELS}
           quit={quitGame}
           end={endGame}
-          difficultyFactor={state.difficultyFactor} />}
+          difficultyFactor={state.difficultyFactor}
+          startGameDifficultyFactor= {state.gameStartDifficultyFactor} />}
       </div>
 
 

@@ -15,11 +15,15 @@
 
 .App .App-left{
   grid-area: left;
+  display: flex;
+  align-items: flex-end;
 }
 
 
 .App .App-middle {
   grid-area: middle;
+  display: flex;
+  justify-content: center;
 }
 
 .App .App-right {

@@ -17,5 +17,9 @@
 
 .App-line-text .text{
   margin: 0px 10px;
+  font-size: 18px;
+}
+
+.App-line-text.wide-screen .text{
   font-size: 26px;
 }

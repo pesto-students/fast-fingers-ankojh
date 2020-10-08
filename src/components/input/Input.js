@@ -1,8 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useContext, useRef } from 'react'
+import { ResizeContext } from '../../contexts/resizeContext';
 import './Input.css'
 
 function Input(props) {
   const inputRef = useRef();
+
+  const {isWideScreen} = useContext(ResizeContext)
+
 
   function onKeyUpHandler() {
     const currentValue = inputRef.current.value
@@ -11,7 +15,7 @@ function Input(props) {
 
   return (
     <input
-      className="App-Input"
+      className={`App-Input ${isWideScreen ? 'wide-screen' : ''} `}
       ref={inputRef}
       tabIndex={props.tabIndex}
       placeholder={props.placeholder}

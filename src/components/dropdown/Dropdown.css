@@ -1,12 +1,17 @@
 .App-Dropdown{
   position: relative;
   width:100%;
-  margin-top:20px;
-  margin-bottom: 100px;
+  margin-top:10px;
+  margin-bottom: 50px;
   outline: none;
   border-radius: 10px;
   border: 1px solid transparent;
   font-family: 'breamcatcher', sans-serif;
+}
+
+.App-Dropdown.wide-screen{
+  margin-top:20px;
+  margin-bottom: 100px;
 }
 
 
@@ -24,26 +29,38 @@
 
 .App-Dropdown .dropdown-main{
   color: #97a5a7;
-  font-size: 35px;
-  padding: 0px 29px;
+  font-size: 25px;
+  padding: 0px 15px;
   border-radius: 10px;
   border:1px solid #97a5a7;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 90px;
+  height: 50px;
   box-sizing: border-box;
   cursor: pointer;
 }
 
 
+.App-Dropdown.wide-screen .dropdown-main{
+  font-size: 35px;
+  padding: 0px 29px;
+  height: 90px;
+
+}
+
 .App-Dropdown .dropdown-options{
-  font-size: 25px;
+  font-size: 20px;
   position: absolute;
   width: 100%;
   /* visibility: hidden; */
   display: none;
 }
+
+.App-Dropdown.wide-screen .dropdown-options {
+  font-size: 25px;
+}
+
 
 
 .App-Dropdown .dropdown-options.show {

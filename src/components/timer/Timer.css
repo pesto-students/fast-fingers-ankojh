@@ -7,12 +7,12 @@
   color: white;
   font-size: 57px;
   position: absolute;
-  width: 257.1px;
-  height: 257.1px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
+
 
 
 @keyframes time-circle{ 

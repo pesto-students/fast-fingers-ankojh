@@ -16,7 +16,7 @@ const {isWideScreen} = useContext(ResizeContext);
   return (
     <div className={`App-right__panel ${isWideScreen ? 'wide-screen' : ''}`}> 
       <span>FAST FINGERS</span>
-      <IconButton icon={homeIcon} iconHeight={'66px'} onClick={homeIconClicked} />
+      <IconButton icon={homeIcon} iconHeight={isWideScreen ? '66px': '30px'} onClick={homeIconClicked} />
     </div>
   );
 };

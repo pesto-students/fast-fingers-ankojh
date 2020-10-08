@@ -8,8 +8,15 @@
   color: red;
 }
 
+
+
+
 .App-Game div{
   font-family: 'Gotham', sans-serif;
-  font-size: 62px;
+  font-size: 30px;
   color: white;
+}
+
+.App-Game.wide-screen div{
+  font-size: 62px;
 }

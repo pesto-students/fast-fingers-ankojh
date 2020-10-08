@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Dropdown.css'
 import arrow from '../../assets/Icon ionic-md-arrow-dropdown.svg'
+import { ResizeContext } from '../../contexts/resizeContext'
 
 
 function Dropdown(props) {
+
+
+  const {isWideScreen} = useContext(ResizeContext);
 
 
   const [state, setState] = useState({
@@ -61,7 +65,7 @@ function Dropdown(props) {
   return (
 
 
-    <div className="App-Dropdown" tabIndex={props.tabIndex} onKeyDown={keyDowned}>
+    <div className={`App-Dropdown ${isWideScreen ? 'wide-screen' : ''}`} tabIndex={props.tabIndex} onKeyDown={keyDowned}>
       <div className="dropdown-main" onClick={toggleOptions}>
         <span>{state.selectedText}</span>
         <img src={arrow} alt="pp" />

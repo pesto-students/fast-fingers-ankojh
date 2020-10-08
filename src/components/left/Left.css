@@ -1,12 +1,13 @@
 .App-left__panel{
   width:100%;
   max-width: unset;
+  flex-direction: row;
+  display: flex;
 }
 
 
 .App-left__panel.wide-screen{
   max-width: 300px;
-  display: flex;
   flex-direction: column;
   width: unset;
   height: 100%;

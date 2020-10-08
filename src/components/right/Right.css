@@ -7,9 +7,9 @@
   align-items: flex-start;
   font-size: 30px;
   color: #ff5155;
-  font-size: 56px;
   font-family: 'lasercorpsgrad', sans-serif;
   text-align: start;
+  /* max-width: 400px; */
 }
 
 .App-right__panel span {
@@ -24,5 +24,8 @@
   flex-direction: column;
   align-items: flex-end;
   text-align: end;
-  max-width: 300px;
+  font-size: unset;
+  font-size: 56px;
+
+  /* max-width: 400px; */
 }
