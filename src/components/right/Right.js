@@ -10,7 +10,9 @@ const {isWideScreen} = useContext(ResizeContext);
 
 
   function homeIconClicked(){
-    props.goHome && props.goHome();
+    if(window.confirm('Home Sick So Soon?')){
+      props.goHome && props.goHome();
+    }
   }
 
   return (

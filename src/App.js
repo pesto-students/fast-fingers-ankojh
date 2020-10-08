@@ -66,16 +66,15 @@ function App() {
 
   function startGame(name = state.playerName, level = state.gameStartDifficultyFactor) {
 
-
-    
-
     const gamesFromStorage = JSON.parse(localStorage.getItem(name));
     
+    let gameNumber = previousGames.length;
+
     if(gamesFromStorage){
       setPreviousGames(gamesFromStorage)
+      gameNumber = gamesFromStorage.length;
     }
 
-    const gameNumber = previousGames.length;
 
     setState({
       ...state,
@@ -137,7 +136,8 @@ function App() {
 
   function quitGame() {
     //show alert
-    window.close();
+    // window.close();
+    goToHome()
   }
 
   function goToHome() {

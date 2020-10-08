@@ -13,12 +13,6 @@
   font-family: 'Gotham', sans-serif;
 }
 
-.App-Icon-Button[disabled]:hover{
-  box-shadow: none;
-  cursor: default;
-  border: 1px solid transparent;
-}
-
 .App-Icon-Button img {
 
 }
@@ -50,4 +44,16 @@
 .App-Icon-Button:hover img{
   transition: all 0.3s;
   /* transform: scale(1.1); */
+}
+
+.App-Icon-Button[disabled]:hover {
+  box-shadow: none;
+  cursor: default;
+  border: 1px solid transparent;
+}
+
+.App-Icon-Button[disabled]:focus {
+  box-shadow: none;
+  cursor: default;
+  border: 1px solid transparent;
 }

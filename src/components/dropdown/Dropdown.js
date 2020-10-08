@@ -58,7 +58,9 @@ function Dropdown(props) {
 
   function optionKeyDowned(keyboardEvent, option, index){
     if (keyboardEvent.keyCode === 13) {
-     optionClicked(option, index);
+      setTimeout(() => {
+        optionClicked(option, index);
+      }, 100);
     }
   }
 
